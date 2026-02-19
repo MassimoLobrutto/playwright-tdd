@@ -1,5 +1,5 @@
 import { APIRequestContext } from '@playwright/test';
-import { logger } from '../../helper/logger/logger';
+import { logger } from '../logger/logger';
 
 export class ApiController {
   // baseUrl is now a required parameter for the instance
