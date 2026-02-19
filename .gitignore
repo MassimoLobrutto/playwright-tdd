@@ -1,0 +1,25 @@
+# Folders to ignore
+node_modules/
+dist/
+.npm/
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example     # Good practice to keep an example file
+
+# Test Outputs
+test-results/
+playwright-report/
+browserstack-reports/
+logs/
+*.log
+
+# OS & IDE
+.DS_Store
+.vscode/*
+!.vscode/launch.json  # Keep this so your debug profile works for others!
+.idea/
+
+# Playwright authentication sessions
+.auth/
