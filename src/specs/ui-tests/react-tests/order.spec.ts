@@ -6,9 +6,9 @@ import { attachTestObject, getTestObject } from '../../../helper/utils/test-data
 test.describe('SauceLabs E2E Workflows', () => {
   test.beforeEach(async ({ page }, testInfo) => {
     // Generate a new order test object for each test and attach it to the test info for later retrieval
-    const orderTesObject = generateOrderData();
+    const orderTestObject = generateOrderData();
     // Assign test object to test info for sharing across steps in the workflow
-    await attachTestObject(testInfo, orderTesObject, 'generated-order-data');
+    await attachTestObject(testInfo, orderTestObject, 'generated-order-data');
 
     await test.step('Navigate to homepage', async () => {
       await page.goto('https://www.saucedemo.com/');
@@ -51,8 +51,8 @@ test.describe('SauceLabs E2E Workflows', () => {
   test('Performance user login takes less than 6 seconds', async ({ page, sauceLabsLoginPage }) => {
     const threshold = 6;
 
-    await test.step('Login as standard user', async () => {
-      await sauceLabsLoginPage.loginToApplication('standard_user');
+    await test.step('Login as performance_glitch_user user', async () => {
+      await sauceLabsLoginPage.loginToApplication('performance_glitch_user');
     });
 
     await test.step(`Measure login duration for performance_glitch_user`, async () => {
