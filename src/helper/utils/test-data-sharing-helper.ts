@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TestInfo } from '@playwright/test';
-import { BookingModel } from '../../test-data/test-data';
+import { OrderModel } from '../../test-data/test-data';
 
-export function attachTestObject(testInfo: TestInfo, testObject: BookingModel, key: string): Promise<void> {
+export function attachTestObject(testInfo: TestInfo, testObject: OrderModel, key: string): Promise<void> {
   return testInfo
     .attach(key, {
       body: JSON.stringify(testObject),
@@ -13,6 +13,6 @@ export function attachTestObject(testInfo: TestInfo, testObject: BookingModel, k
     });
 }
 
-export function getTestObject<T = BookingModel>(testInfo: TestInfo, key: string): T {
+export function getTestObject<T = OrderModel>(testInfo: TestInfo, key: string): T {
   return (testInfo as any as { [k: string]: any })[key] as T;
 }
