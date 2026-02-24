@@ -40,7 +40,7 @@ test.describe('SauceLabs E2E Workflows', () => {
 
   test('Problem user sees broken assets', async ({ sauceLabsLoginPage, inventoryPage }) => {
     await test.step('Login as problem user', async () => {
-      await sauceLabsLoginPage.loginToApplication('problem_user', password);
+      await sauceLabsLoginPage.loginToApplication('problem_user');
     });
 
     await test.step('Verify broken images are visible', async () => {
@@ -52,7 +52,7 @@ test.describe('SauceLabs E2E Workflows', () => {
     const threshold = 6;
 
     await test.step('Login as standard user', async () => {
-      await sauceLabsLoginPage.loginToApplication('standard_user', password);
+      await sauceLabsLoginPage.loginToApplication('standard_user');
     });
 
     await test.step(`Measure login duration for performance_glitch_user`, async () => {
