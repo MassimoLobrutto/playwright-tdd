@@ -1,38 +1,47 @@
 /* eslint-disable no-empty-pattern */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { test as base, Page } from '@playwright/test';
-import { LoginPage } from '../pages/stored-auth-tests/login-page';
-import { Homepage } from '../pages/ui-tests/home-page';
-import { AdminLoginPage } from '../pages/ui-tests/admin-login-page';
-import { AdminDashboardPage } from '../pages/ui-tests/admin-dashboard-page';
-import { RoomPage } from '../pages/ui-tests/room-page';
+import { test as base } from '@playwright/test';
 import { ApiController } from '../helper/api/api-helper';
+import { ChambersHomePage } from '../pages/ui-tests/angular/chambers-home-page';
+import { ChambersNavPage } from '../pages/ui-tests/angular/chambers-nav-page';
+import { ChambersResearchTeamPage } from '../pages/ui-tests/angular/chambers-research-team-page';
+import { SauceLabsLoginPage } from '../pages/ui-tests/react/login-page';
+import { InventoryPage } from '../pages/ui-tests/react/inventory-page';
+import { CartPage } from '../pages/ui-tests/react/cart-page';
+import { CheckoutPage } from '../pages/ui-tests/react/checkout-page';
 
 interface Fixtures {
-  loginPage: LoginPage;
-  homepage: Homepage;
-  adminLoginPage: AdminLoginPage;
-  adminDashboardPage: AdminDashboardPage;
-  roomPage: RoomPage;
-  page: Page;
+  sauceLabsLoginPage: SauceLabsLoginPage;
+  inventoryPage: InventoryPage;
+  cartPage: CartPage;
+  checkoutPage: CheckoutPage;
+  chambersHomePage: ChambersHomePage;
+  chambersNavPage: ChambersNavPage;
+  chambersResearchTeamPage: ChambersResearchTeamPage;
 }
 
 function getPageFiles() {
   return {
-    loginPage: async ({ page }, use) => {
-      await use(new LoginPage(page));
+    sauceLabsLoginPage: async ({ page }, use) => {
+      await use(new SauceLabsLoginPage(page));
     },
-    homepage: async ({ page }, use) => {
-      await use(new Homepage(page));
+    inventoryPage: async ({ page }, use) => {
+      await use(new InventoryPage(page));
     },
-    adminLoginPage: async ({ page }, use) => {
-      await use(new AdminLoginPage(page));
+    cartPage: async ({ page }, use) => {
+      await use(new CartPage(page));
     },
-    adminDashboardPage: async ({ page }, use) => {
-      await use(new AdminDashboardPage(page));
+    checkoutPage: async ({ page }, use) => {
+      await use(new CheckoutPage(page));
     },
-    roomPage: async ({ page }, use) => {
-      await use(new RoomPage(page));
+    chambersHomePage: async ({ page }, use) => {
+      await use(new ChambersHomePage(page));
+    },
+    chambersNavPage: async ({ page }, use) => {
+      await use(new ChambersNavPage(page));
+    },
+    chambersResearchTeamPage: async ({ page }, use) => {
+      await use(new ChambersResearchTeamPage(page));
     },
   };
 }
