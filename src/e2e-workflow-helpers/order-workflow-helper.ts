@@ -2,6 +2,11 @@
 import test, { expect } from '@playwright/test';
 import { OrderModel } from '../test-data/test-data';
 
+// PW tdd cannot share steps like cucumber, which can result in lots of step repetition
+// The below is a custom function that takes an e2e flow and allows the user to select a start and end point in the flow
+// The values inside are static but as the helper is flexible you 'drop out' the step before
+// Make a separate test.step in the spec with your changes that differ from the main flow belore
+// Then you can jump back in with the step after your separate test step and carry on
 export enum OrderWorkflowStep {
   LoginAsStandardUser = 'Login as Standard User',
   AddItemToCart = 'Add Item to Cart',

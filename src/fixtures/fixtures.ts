@@ -10,6 +10,8 @@ import { InventoryPage } from '../pages/ui-tests/react/inventory-page';
 import { CartPage } from '../pages/ui-tests/react/cart-page';
 import { CheckoutPage } from '../pages/ui-tests/react/checkout-page';
 
+// To stop having to instantiate pages on every test the below will instantiate all POMS at the start of a test run
+// This is then passed into the test fixture and is available in the spec straight away
 interface Fixtures {
   sauceLabsLoginPage: SauceLabsLoginPage;
   inventoryPage: InventoryPage;
@@ -46,6 +48,9 @@ function getPageFiles() {
   };
 }
 
+// The below is where the 'test' fixture can be extended like a base page inheritance
+// Where anytime the test fixture is called (Which is every spec) the functions are ready to be used
+// In the case below api request helpers and POM instances
 type ApiFixtures = {
   apiController: ApiController;
   apiResponse: { last: any };

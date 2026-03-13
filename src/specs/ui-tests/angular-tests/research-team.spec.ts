@@ -1,8 +1,12 @@
 import { test, expect } from '../../../fixtures/fixtures';
 import { logger } from '../../../helper/logger/logger';
 
+// All POMS are instantiated at startup before the tests are run via fixtures.ts
+// Then all that is needed is to pass in the POM name in the test.xx
+// Then the POM and its method can be interacted with
 test.describe('Search for persons and guides in angular search page', () => {
   test.beforeEach(async ({ chambersHomePage, chambersNavPage }) => {
+    // test.step is not mandatory but it makes the scripts and reports more readable
     await test.step('Navigate to homepage', async () => {
       await chambersHomePage.navigateToHomepage();
     });

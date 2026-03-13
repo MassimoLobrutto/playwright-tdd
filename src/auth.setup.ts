@@ -1,7 +1,10 @@
-import { chromium, expect } from '@playwright/test';
+import { chromium } from '@playwright/test';
 import { logger } from './helper/logger/logger';
 import path from 'node:path';
 
+// Global setup can be used to execute scripts and functions before the tests run
+// In the case below it logs into the site and stores the cookies
+// Then in the test the cookies can be reused to bypass logins and save time
 async function globalSetup() {
   const browser = await chromium.launch();
 
