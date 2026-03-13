@@ -5,9 +5,9 @@ import { attachTestObject, getTestObject } from '../../../helper/utils/test-data
 
 test.describe('SauceLabs E2E Workflows', () => {
   test.beforeEach(async ({ page }, testInfo) => {
-    // Generate a new order test object for each test and attach it to the test info for later retrieval
+    // Generate a new order testObject for each test
     const orderTestObject = generateOrderData();
-    // Assign test object to test info for sharing across steps in the workflow
+    // Assign testobject to testInfo container and select a unique keyword for sharing across tests in the spec
     await attachTestObject(testInfo, orderTestObject, 'generated-order-data');
 
     await test.step('Navigate to homepage', async () => {
@@ -22,12 +22,16 @@ test.describe('SauceLabs E2E Workflows', () => {
     cartPage,
     checkoutPage,
   }) => {
-    // retrieve the generated order test object from the test info
+    // retrieve the generated order testObject from the testInfo container using the keyword
     const orderTestObject = getTestObject(test.info(), 'generated-order-data');
 
     // As playwright tdd cannot share steps like cucumber
     // We can use a helper function to execute the order workflow steps in sequence
     // With dynamic start and stop points, allowing us to reuse the same workflow for different test scenarios
+    // Below runs the standard work flow until checkout page
+    // Since the user wants to run tests that differ from the e2e flow in the helper
+    // They can add their custom steps and either let the test end there
+    // Or for example if there we tests in the e2e worflow after they could use the orderWorkflow function to execute those steps till the end
     await orderWorkflow({
       testObject: orderTestObject,
       page,
