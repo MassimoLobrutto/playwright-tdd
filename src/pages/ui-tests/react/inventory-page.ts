@@ -4,12 +4,14 @@ export class InventoryPage {
   readonly page: Page;
   readonly inventoryItem: Locator;
   readonly cartLink: Locator;
+  readonly cartBadge: Locator;
   readonly brokenImage: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.inventoryItem = page.locator('.inventory_item');
     this.cartLink = page.locator('.shopping_cart_link');
+    this.cartBadge = page.locator('.shopping_cart_badge');
     this.brokenImage = page.locator('img[src*="sl-404"]');
   }
 

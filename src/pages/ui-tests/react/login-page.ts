@@ -15,9 +15,9 @@ export class SauceLabsLoginPage {
     this.errorContainer = page.locator('[data-test="error"]');
   }
 
-  async loginToApplication(username: string) {
+  async loginToApplication(username: string, password = 'secret_sauce') {
     await this.usernameTextbox.fill(username);
-    await this.passwordTextbox.fill('secret_sauce');
+    await this.passwordTextbox.fill(password);
     await this.loginButton.click();
   }
 }
